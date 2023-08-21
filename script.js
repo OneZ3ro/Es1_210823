@@ -29,6 +29,7 @@ console.log(User.diffAge(userX, userZ));
 
 const animalArr = [];
 const lista = document.getElementById("lista");
+const input = document.querySelectorAll("input");
 class Pet {
   constructor(petName, ownerName, species, breed) {
     this.petName = petName;
@@ -38,18 +39,14 @@ class Pet {
   }
 
   static isSameOwner(animalX, animalY) {
-    // console.log("Funziona");
     if (animalX.ownerName === animalY.ownerName) {
-      return (
-        animalX.petName + " e " + animalY.petName + " hanno lo stesso padrone"
-      );
+      return true;
     }
   }
 }
 
 const createAnimal = function (event) {
   event.preventDefault();
-  const input = document.querySelectorAll("input");
   const arr = [];
 
   for (let i = 0; i < input.length; i++) {
@@ -61,12 +58,13 @@ const createAnimal = function (event) {
 
   const li = document.createElement("li");
   li.innerText = `Nome animale: ${animal.petName};\n Nome padrone: ${animal.ownerName};\n Specie ${animal.petName}: ${animal.species} ${animal.breed}`;
+  li.style.marginBottom = "30px";
   lista.appendChild(li);
 
-  console.log(arr);
-  console.log(animal);
-  console.log(animalArr);
-  //   if (animalArr >= 2) {
-  //     console.log(Pet.isSameOwner(animalArr[0], animalArr[1]));
-  //   }
+  if (animalArr.length >= 2) {
+    console.log(Pet.isSameOwner(animalArr[0], animalArr[1]));
+  }
+  //   console.log(arr);
+  //   console.log(animal);
+  //   console.log(animalArr);
 };
